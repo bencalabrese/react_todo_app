@@ -6,11 +6,11 @@ var TodoForm = require('./todo_form');
 var TodoList = React.createClass({
 
   getInitialState: function(){
-    return TodoStore.all();
+    return {todoItems: TodoStore.all()};
   },
 
   todosChanged: function(){
-    this.setState(TodoStore.all());
+    this.setState({todoItems: TodoStore.all()});
   },
 
   componentDidMount: function() {
@@ -23,19 +23,14 @@ var TodoList = React.createClass({
   },
 
   render: function(){
-    var todoItems = [];
-    for (var id in this.state) {
-      todoItems.push(this.state[id]);
-    }//for in
-
-    todoItems = todoItems.map(function(todo){
+    var todoListItems = this.state.todoItems.map(function(todo){
       return <TodoListItem key={todo.id} todo={todo}/>;
     });
 
     return (
       <div>
-        {todoItems}
-        <TodoForm todoStore={TodoStore}/>
+        {todoListItems}
+        <TodoForm/>
       </div>
     );
 

@@ -17,7 +17,13 @@ var TodoStore = {
   },
 
   all: function(){
-    return _todos;
+    var todoItems = [];
+
+    for (var id in _todos) {
+      todoItems.push(_todos[id]);
+    }
+
+    return todoItems;
   },
 
   resetTodos: function(todos){

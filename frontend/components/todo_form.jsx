@@ -1,4 +1,5 @@
 var React = require('react');
+var TodoStore = require('../stores/todo_store');
 
 var TodoForm = React.createClass({
   getInitialState: function(){
@@ -14,7 +15,7 @@ var TodoForm = React.createClass({
   },
 
   handleSubmit: function() {
-    this.props.todoStore.create(this.state);
+    TodoStore.create(this.state);
   },
 
   render: function() {
