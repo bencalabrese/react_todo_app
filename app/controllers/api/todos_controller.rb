@@ -8,15 +8,19 @@ class Api::TodosController < ApplicationController
   end
 
   def create
-    Todo.create!(todo_params)
+    todo = Todo.create!(todo_params)
+    render json: todo
   end
 
   def destroy
-    Todo.find(params[:id]).destroy!
+    todo = Todo.find(params[:id]).destroy!
+    render json: todo
   end
 
   def update
-    Todo.find(params[:id]).update!(todo_params)
+    todo = Todo.find(params[:id])
+    todo.update!(todo_params)
+    render json: todo
   end
 
   private
