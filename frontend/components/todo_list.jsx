@@ -7,6 +7,19 @@ var TodoList = React.createClass({
     return TodoStore.all();
   },
 
+  todosChanged: function(){
+    this.setState(TodoStore.all());
+  },
+
+  componentDidMount: function() {
+    TodoStore.addChangedHandler(this.todosChanged);
+    TodoStore.fetch();
+  },
+
+  componentWillUnmount: function() {
+    TodoStore.removeChangedHandler(this.todosChanged);
+  },
+
   render: function(){
     var todoItems = [];
     for (var id in this.state) {
