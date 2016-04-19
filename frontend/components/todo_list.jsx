@@ -1,5 +1,6 @@
 var React = require('react');
 var TodoStore = require('../stores/todo_store');
+var TodoListItem = require('./todo_list_item');
 
 var TodoList = React.createClass({
 
@@ -27,13 +28,11 @@ var TodoList = React.createClass({
     }//for in
 
     todoItems = todoItems.map(function(todo){
-      return <li key={todo.id}>{todo.title}</li>;
+      return <TodoListItem key={todo.id} todo={todo}/>;
     });
 
     return (
-      <div>
-        <ul>{todoItems}</ul>
-      </div>
+      <div>{todoItems}</div>
     );
 
   }//render
