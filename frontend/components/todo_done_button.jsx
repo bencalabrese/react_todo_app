@@ -2,7 +2,6 @@ var React = require('react');
 var TodoStore = require('../stores/todo_store');
 
 var TodoDoneButton = React.createClass ({
-
   handleToggle: function(event){
     TodoStore.toggleDone(this.props.todo.id);
   },
@@ -14,8 +13,6 @@ var TodoDoneButton = React.createClass ({
       <button onClick={this.handleToggle}>{content}</button>
     );
   }
-
 });
-
 
 module.exports = TodoDoneButton;

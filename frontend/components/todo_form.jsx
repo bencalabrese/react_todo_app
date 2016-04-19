@@ -14,7 +14,8 @@ var TodoForm = React.createClass({
     this.setState({body: event.currentTarget.value});
   },
 
-  handleSubmit: function() {
+  handleSubmit: function(event) {
+    event.preventDefault();
     TodoStore.create(this.state);
   },
 
